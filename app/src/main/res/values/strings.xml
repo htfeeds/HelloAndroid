@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">HTF Hello Android</string>
+    <string name="action_settings">Settings</string>
+
+    <!--Content First Lab-->
+    <string name="title_activity_first_lab">1st: Hello World!</string>
+    <string name="edt_message">Enter a message</string>
+    <string name="btn_send">Send</string>
+
+    <!--Content Display Message-->
+    <string name="title_activity_display_message">Display Message</string>
+
+    <!--Content HTF First Demo-->
+    <string name="title_activity_htf_first_demo">HTF First Demo</string>
+    <string name="welcome">HTF Say Hello World</string>
+    <string name="btn_change">Nether Swap</string>
+    <string name="edt_hint">Type a number</string>
+    <string name="btn_check">Check</string>
+
+    <!--Content Second Lab-->
+    <string name="title_activity_second_lab">2nd: Consuming Web Services</string>
+    <string name="title_list">List of users registered at FMusic</string>
+    <string name="btn_register">Register</string>
+    <string name="btn_login">Login</string>
+
+    <!--Content Register Activity-->
+    <string name="title_activity_register">Register</string>
+    <string name="register_title">Register to FMusic</string>
+    <string name="txv_name">Name</string>
+    <string name="txv_email">Email</string>
+    <string name="txv_username">Username</string>
+    <string name="txv_pwd">Password</string>
+
+    <!--Content Login Activity-->
+    <string name="title_activity_login">Login</string>
+    <string name="login_title">Login to FMusic</string>
+
+</resources>
