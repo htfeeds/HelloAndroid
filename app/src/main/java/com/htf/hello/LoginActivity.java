@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.htf.utils.Credentials;
+import com.htf.utils.PrefUtils;
 import com.htf.utils.Utility;
 
 import org.springframework.web.client.RestTemplate;
@@ -43,7 +44,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void navigatetoUserList() {
-        SecondLabActivity.user = edtUsername.getText().toString();
         Intent intent = new Intent(this, SecondLabActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
@@ -72,6 +72,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private class DoLoginTask extends AsyncTask<Credentials, Void, Boolean> {
         private ProgressDialog prgDialog;
+        private Credentials credentials;
 
         @Override
         protected void onPreExecute() {
@@ -80,9 +81,10 @@ public class LoginActivity extends AppCompatActivity {
 
         @Override
         protected Boolean doInBackground(Credentials... params) {
+            this.credentials = params[0];
             String url = RegisterActivity.BASE_URL + "login";
             RestTemplate restTemplate = new RestTemplate();
-            boolean b = restTemplate.postForObject(url, params[0], Boolean.class);
+            boolean b = restTemplate.postForObject(url, credentials, Boolean.class);
 
             return b;
         }
@@ -90,6 +92,9 @@ public class LoginActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Boolean aBoolean) {
             if (aBoolean) {
+                PrefUtils.saveToPrefs(LoginActivity.this, PrefUtils.PREFS_LOGIN_USERNAME_KEY, credentials.getUsername());
+                PrefUtils.saveToPrefs(LoginActivity.this, PrefUtils.PREFS_LOGIN_PASSWORD_KEY, credentials.getPassword());
+
                 Toast.makeText(getApplicationContext(), "You are successfully logged in!", Toast.LENGTH_LONG).show();
                 navigatetoUserList();
             } else {

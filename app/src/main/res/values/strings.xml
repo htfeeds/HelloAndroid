@@ -35,4 +35,10 @@
     <string name="title_activity_login">Login</string>
     <string name="login_title">Login to FMusic</string>
 
+    <!--Content Login Activity-->
+    <string name="title_activity_dialog">DialogActivity</string>
+
+    <!--Content Login Activity-->
+    <string name="title_activity_sub">Sub Activity</string>
+
 </resources>

@@ -1,5 +1,6 @@
 package com.htf.hello;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -55,6 +56,55 @@ public class HtfFirstDemo extends AppCompatActivity {
                 }
             }
         });
+
+        Button btnDialogActivity = (Button) findViewById(R.id.btnDialogActivity);
+        btnDialogActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HtfFirstDemo.this, DialogActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        Button btnSubActivity = (Button) findViewById(R.id.btnSubActivity);
+        btnSubActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HtfFirstDemo.this, SubActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        Toast.makeText(getApplicationContext(), "onCreate() callback", Toast.LENGTH_SHORT).show();
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Toast.makeText(getApplicationContext(), "The onStart() callback", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Toast.makeText(getApplicationContext(), "The onResume() callback", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Toast.makeText(getApplicationContext(), "The onPause() callback", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Toast.makeText(getApplicationContext(), "The onStop() callback", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Toast.makeText(getApplicationContext(), "The onDestroy() callback", Toast.LENGTH_SHORT).show();
+    }
 }

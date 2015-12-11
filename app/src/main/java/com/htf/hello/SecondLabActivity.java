@@ -11,6 +11,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.htf.adapters.UserAdapter;
+import com.htf.utils.PrefUtils;
 import com.htf.utils.User;
 
 import org.springframework.web.client.RestTemplate;
@@ -19,7 +20,6 @@ import java.util.Arrays;
 import java.util.List;
 
 public class SecondLabActivity extends AppCompatActivity {
-    public static String user = "Guest";
     private TextView txvUser;
 
     @Override
@@ -30,8 +30,13 @@ public class SecondLabActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        String loggedInUserName = PrefUtils.getFromPrefs(SecondLabActivity.this, PrefUtils.PREFS_LOGIN_USERNAME_KEY, "");
+        if (loggedInUserName.equals("")) {
+            loggedInUserName = "Guest";
+        }
+
         txvUser = (TextView) findViewById(R.id.txvUser);
-        txvUser.setText("Hi, " + user);
+        txvUser.setText("Hi, " + loggedInUserName);
 
         new GetUserList().execute();
     }
